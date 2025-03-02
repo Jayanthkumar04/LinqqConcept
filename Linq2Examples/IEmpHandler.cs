@@ -14,7 +14,7 @@ namespace Linq2Examples
 
         Emp GetEmpByName(string name);
 
-        void UpdateEmp(int id);
+        void UpdateEmp(Emp emp);
 
         void DeleteEmp(Emp emp);
 

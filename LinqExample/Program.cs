@@ -39,7 +39,7 @@ namespace LinqExample
 
             var query2 = emps.Where(e => e.Designation == desg);
 
-            Console.WriteLine($"*******************************List of {desg} *****************************");
+            Console.WriteLine($"**********************    List of {desg}    *****************************");
 
             foreach(Emp emp in query2)
             {
@@ -51,9 +51,9 @@ namespace LinqExample
             
                         try
                         {
-                            int id;
+                        int id;
                         Console.WriteLine("enter Id to find out employee details");
-                        id = int.Parse(Console.ReadLine());
+                        id  =  int.Parse(Console.ReadLine());
                         Emp emp2 = emps.SingleOrDefault(e => e.Id == id);
 
 

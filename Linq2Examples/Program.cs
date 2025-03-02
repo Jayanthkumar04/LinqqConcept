@@ -10,21 +10,106 @@ namespace Linq2Examples
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("*************WELCOME TO EMPLOYEE MANAGEMENT SYSTEM*********************");
+            EmpHandler empHandler = new EmpHandler();
 
-            List<Emp> emps = new List<Emp>()
+            Console.WriteLine("choose the option to continue");
+
+            while (true)
             {
-               new Emp(){Id=1,Name="jay",Salary=98500.33,DOJ=new DateTime(day:07,month:10,year:2024),Designation="Manager"},
-             new Emp(){Id=2,Name="yash",Salary=99666.33,DOJ=new DateTime(day:26,month:2,year:2025),Designation="HR"},
-          new Emp(){Id=3,Name="harinivas",Salary=88500.33,DOJ=new DateTime(day:11,month:10,year:2023),Designation="Tester"},
-      new Emp(){Id=4,Name="ganesh",Salary=98500.33,DOJ=new DateTime(day:12,month:12,year:2020),Designation="Developer"},
-             new Emp(){Id=5,Name="yadavalli rajyalaxmi",Salary=996634.33,DOJ=new DateTime(day:26,month:2,year:2025),Designation="Manager"},
-          new Emp(){Id=6,Name="harinivas",Salary=88500.33,DOJ=new DateTime(day:11,month:10,year:2023),Designation="Tester"},
-      new Emp(){Id=10,Name="ganesh",Salary=98500.33,DOJ=new DateTime(day:12,month:12,year:2020),Designation="Developer"},
 
-            };
+                Console.WriteLine("1)Get all employees\n 2)Get Employee By Id \n3)Get Employee By Name\n4)Update Employee\n" +
+                    "5)delete Employee By Id\n 6)Add new Employee\n7)exit");
+
+                int option = int.Parse(Console.ReadLine());
+                switch (option)
+                {
+                    case 1:
+                       var result = empHandler.GetAllEmps();
+                        Console.WriteLine("ID\t\tName\t\tDesignation\t\tSalary\t\tDoj");
+                        foreach(var i in result)
+                        {
+                            Console.WriteLine(i.Id+"\t\t"+i.Name+"\t\t"+i.Designation+"\t\t"+i.Salary+"\t\t"+i.DOJ);
+
+                        }
+                        break;
+                    case 2:
+                        Console.WriteLine("enter the Employee Id");
+                        int id = int.Parse(Console.ReadLine());
+                        Emp em = empHandler.GetEmpById(id);
+
+                        Console.WriteLine("ID\t\tName\t\tDesignation\t\tSalary\t\tDoj");
+
+                        Console.WriteLine(em.Id + "\t\t" + em.Name + "\t\t" + em.Designation + "\t\t" + em.Salary + "\t\t" + em.DOJ);
+
+                        break;
+                    case 3:
+                        Console.WriteLine("enter the Employee name");
+                        string name = Console.ReadLine();
+
+                        Console.WriteLine("ID\t\tName\t\tDesignation\t\tSalary\t\tDoj");
+
+                        Emp em2 = empHandler.GetEmpByName(name);
+                        Console.WriteLine(em2.Id + "\t\t" + em2.Name + "\t\t" + em2.Designation + "\t\t" + em2.Salary + "\t\t" + em2.DOJ);
+
+                        break;
+                    case 4:
+                        Emp emp = new Emp();
+                        Console.WriteLine("Enter employee details");
+                        Console.WriteLine("Enter Id");
+                        emp.Id = int.Parse(Console.ReadLine());
+                        Console.WriteLine("enter name");
+                        emp.Name = Console.ReadLine();
+                        Console.WriteLine("enter designation");
+                        emp.Designation = Console.ReadLine();
+                        Console.WriteLine("enter salary");
+                        emp.Salary = double.Parse(Console.ReadLine());
 
 
+                        Console.WriteLine("enter doj");
+                        emp.DOJ = DateTime.Parse(Console.ReadLine());
 
+                        empHandler.UpdateEmp(emp);
+
+                        break;
+
+                    case 5:
+                        Console.WriteLine("enter the Employee Id");
+                        int id2 = int.Parse(Console.ReadLine());
+
+                        empHandler.DeleteEmp(id2);
+                        break;
+                    case 6:
+                        Emp emp2 = new Emp();
+                        Console.WriteLine("Enter employee details");
+                        Console.WriteLine("Enter Id");
+                        emp2.Id = int.Parse(Console.ReadLine());
+                        Console.WriteLine("enter name");
+                        emp2.Name = Console.ReadLine();
+                        Console.WriteLine("enter designation");
+                        emp2.Designation = Console.ReadLine();
+                        Console.WriteLine("enter salary");
+                        emp2.Salary = double.Parse(Console.ReadLine());
+
+
+                        Console.WriteLine("enter doj");
+                        emp2.DOJ = DateTime.Parse(Console.ReadLine());
+
+                        empHandler.CreateEmp(emp2);
+
+                        break;
+
+                    case 7:
+                        Console.WriteLine("closed");
+                        break;
+
+                }
+
+
+            }
         }
+
     }
+
 }
+

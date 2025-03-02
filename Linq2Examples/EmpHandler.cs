@@ -22,7 +22,14 @@ namespace Linq2Examples
         };
         public void CreateEmp(Emp emp)
         {
-            employees.Add(emp);
+            Emp empNew = new Emp();
+
+            empNew.Id = emp.Id;
+            empNew.Name = emp.Name;
+            empNew.Salary = emp.Salary;
+            empNew.Designation = emp.Designation;
+            empNew.DOJ = emp.DOJ;
+            employees.Add(empNew);
 
             Console.WriteLine("employee created successfully");
 
@@ -40,6 +47,11 @@ namespace Linq2Examples
             {
                 Console.WriteLine("no such record exists to delete...................");
             }
+        }
+
+        public void DeleteEmp(Emp emp)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Emp> GetAllEmps()
@@ -63,8 +75,17 @@ namespace Linq2Examples
         public void UpdateEmp(Emp emp)
         {
             var extEmployee = GetEmpById(emp.Id);
+
+            //extEmployee.Id = emp.Id;
+            //extEmployee.Name = emp.Name;
+            //extEmployee.Salary = emp.Salary;
+            //extEmployee.Designation = emp.Designation;
+            //extEmployee.DOJ = emp.DOJ;
+
             if(extEmployee != null)
             {
+                Console.WriteLine("WE R IN");
+                extEmployee.Id = emp.Id;
                 extEmployee.Name = emp.Name;
                 extEmployee.Salary = emp.Salary;
                 extEmployee.Designation = emp.Designation;
@@ -76,5 +97,7 @@ namespace Linq2Examples
                 Console.WriteLine($"No such employee exist");
             }
         }
+
+        
     }
 }
